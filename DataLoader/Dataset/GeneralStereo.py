@@ -24,13 +24,11 @@ class GeneralStereoSequence(SequenceBase[StereoFrame]):
         cfg = self.config_dict2ns(config)
 
         # metadata
-        self.seqRoot = Path(cfg.root)
         self.baseline = cfg.bl
         self.T_BS = pp.identity_SE3(1, dtype=torch.float64)
 
         # Check if using on-the-fly rectification
-        rect_info_path = Path(self.seqRoot, "rectification_info.json")
-        data_config_file = "/app/FDCPost/config/test_data.yaml"
+        data_config_file = cfg.data_config_file
         with open(data_config_file, 'r') as f:
             data_config = yaml.load(f, Loader=yaml.FullLoader)
         
@@ -48,7 +46,7 @@ class GeneralStereoSequence(SequenceBase[StereoFrame]):
                 [0.           , 0., 1.           ]
             ]], dtype=torch.float).repeat(len(self.ImageL), 1, 1)
         else:
-            self.K = torch.tensor(np.load(Path(self.seqRoot, "intrinsic.npy"))).float()
+            raise ValueError("Camera intrinsic matrix is not provided")
 
         self.length = len(self.ImageL)
         super().__init__(self.length)

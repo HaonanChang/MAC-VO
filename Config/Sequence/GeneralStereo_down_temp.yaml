@@ -5,7 +5,7 @@ args:
     cy: 560.599250793457
     fx: 565.1982237574123
     fy: 565.1982237574123
+  data_config_file: /app/FDCPost/config/test_config.yaml
   format: png
-  root: /app/FDCPost/data
 name: down
 type: GeneralStereo
