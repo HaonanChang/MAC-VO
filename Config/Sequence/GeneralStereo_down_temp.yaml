@@ -1,0 +1,11 @@
+args:
+  bl: 0.14962844133819508
+  camera:
+    cx: 968.639274597168
+    cy: 560.599250793457
+    fx: 565.1982237574123
+    fy: 565.1982237574123
+  format: png
+  root: /app/FDCPost/data
+name: down
+type: GeneralStereo
